@@ -1,0 +1,84 @@
+<title>今明出诊</title>
+<style type="text/css">
+    .single-page-container {
+        position: static;
+    }
+    
+    .page {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 10;
+    }
+    
+    .page.home {
+        position: static;
+    }
+    
+    .border {
+        border: 1px solid #DBAB7C;
+        border-radius: 2px;
+    }
+    
+    .border .day-type {
+        padding: 5px 8px;
+        display: inline-block;
+        font-size: 12px;
+        color: #DBAB7C;
+    }
+    
+    .border .day-type.selected {
+        background: #DBAB7C;
+        color: #fff;
+    }
+    
+    .weui-cell:before {
+        border: none;
+        left: 0;
+    }
+</style>
+
+<template>
+<div class="single-page-container">
+    <div class="page home js_show">
+        <div class="his-head his-after-line" style="background: #f7f7f7;">
+            <div class="weui-search-bar no-before-line" id="searchBar">
+                <form class="weui-search-bar__form">
+                    <div class="weui-search-bar__box">
+                        <input type="search" class="weui-search-bar__input" value="${:decodeURIComponent(params.condition)}" placeholder="搜索大夫、病症"/>
+                    </div>
+                    <label class="weui-search-bar__label his-hide">
+                        <span>${:decodeURIComponent(params.condition)}</span>
+                    </label>
+                </form>
+                <a href="javascript:" class="weui-search-bar__cancel-btn his-hide" id="searchCancel">取消</a>
+                <div class="deep-color location marginLeft10 lineHeight38">
+                    <span id="city_selector"
+                          style="vertical-align: middle;">${:decodeURIComponent(params.cityName)}</span>
+                    <i class="icon-double-angle-down font16" style="vertical-align: middle;"></i>
+                </div>
+            </div>
+            <div id="switch" class="his-flex white-background" style="padding: 10px 12px;position:relative;margin-top: 10px;">
+                <div class="deep-color"><span class="title-block">医馆出诊大夫</span></div>
+                <div class="border">
+                    <span class="day-type selected" data-type="0">今天</span>
+                    <span class="day-type" data-type="1">明天</span>
+                </div>
+            </div>
+        </div>
+        <div id="wrapper" class="pull-wrapper" style="position: static;padding-top: 114px;">
+            <div class="pull-border" style="position:static;">
+                <div id="doctorList"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    })
+</script>

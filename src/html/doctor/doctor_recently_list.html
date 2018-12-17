@@ -1,0 +1,23 @@
+<title>最近看诊</title>
+<style type="text/css">
+    .weui-cell:before {
+        left: 0;
+    }
+    
+     ::-webkit-input-placeholder {
+        /* WebKit, Blink, Edge */
+        font-size: 15px!important;
+    }
+</style>
+<template>
+<div id="wrapper" class="pull-wrapper" style="position: static;">
+    <div class="pull-border" style="position:static;">
+        <div id="doctorList"></div>
+    </div>
+</div>
+</template>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    })
+</script>

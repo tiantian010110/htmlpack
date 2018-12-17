@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+<title>明医列表</title>
+<link rel="stylesheet" type="text/css" href="../../statics/css/load.css?4500dab0"></link>
+
+<style type="text/css">
+    div {
+        margin: 0;
+        border: 0;
+        padding: 0;
+    }
+    
+    .line-status {
+        position: relative;
+        float: right;
+        padding-left: 15px;
+    }
+    
+    .line-status:before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 0;
+        right: 0;
+        height: 11px;
+        width: 11px;
+        background-color: #ccc;
+        border-radius: 50%;
+    }
+    
+    .line-status.online:before {
+        background-color: #A1C47A !important;
+        ;
+    }
+    
+    .illness-view .illness-item {
+        margin-bottom: 0;
+    }
+</style>
+</head>
+<body style="visibility: hidden;">
+
+<div class="his-header white-background his-after-line">
+    <div class="his-title-line"><span id="title" class="his-title-node light-color font12">根据<span class="red-color">`${:decodeURIComponent(params.condition)}`</span>为您推荐</span></div>
+</div>
+<div id="wrapper" class="pull-wrapper his-has-header">
+    <div class="pull-border paddingTop10">
+        <div id="doctorList" class="weui-cells"></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../statics/js/load.js?d87b1f4c"></script>
+
+<script type="text/javascript" src="../../statics/js/module.js?83824138"></script>
+
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    })
+</script>
+</html>

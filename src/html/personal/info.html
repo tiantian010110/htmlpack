@@ -1,0 +1,43 @@
+<title>我的</title>
+<style type="text/css">
+    html,
+    body {
+        position: static;
+        height: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+</style>
+
+<template>
+    <div style="padding-bottom: 56px;">
+        <div class="weui-cells">
+            <div class="weui-cell">
+                <div class="weui-cell__bd"><label class="weui-label">头像</label></div>
+                <div class="weui-cell__ft"><img id="headImgUrl" src="//image-1252304461.file.myqcloud.com/image/doctor.png" style="vertical-align: top;width: 60px;height: 60px;border-radius: 50%;">
+                </div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd"><label class="weui-label">姓名</label></div>
+                <div id="name" class="weui-cell__ft light-color"></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd"><label class="weui-label">手机</label></div>
+                <div id="mobile" class="weui-cell__ft light-color"></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd"><label class="weui-label">性别</label></div>
+                <div id="gender" class="weui-cell__ft light-color"></div>
+            </div>
+            <div class="weui-cell">
+                <div class="weui-cell__bd"><label class="weui-label">生日</label></div>
+                <div id="birthday" class="weui-cell__ft light-color"></div>
+            </div>
+        </div>
+    </div>
+    <button id="logout" type="button" class="weui-btn weui-btn_warn his-btn-block">退出登录</button>
+    </template>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    });
+</script>

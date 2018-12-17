@@ -1,0 +1,61 @@
+<title>咨询</title>
+<style type="text/css">
+    .status {
+        width: 16px;
+        height: 80px;
+        padding-left: 2px;
+        line-height: calc(80px / 3);
+    }
+    
+    .graphic,
+    .graphic_visit {
+        background: #DA9583!important;
+    }
+    
+    .phone,
+    .phone_visit {
+        background: #73A18D!important;
+    }
+</style>
+
+<template>
+    <div class="his-head weui-search-bar" id="searchBar">
+        <form class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <input type="search" class="weui-search-bar__input" placeholder="搜索大夫" required/>
+            </div>
+            <label class="weui-search-bar__label his-hide">
+                <span></span>
+            </label>
+        </form>
+    </div>
+    <div id="wrapper" class="pull-wrapper view-content" style="position: static;padding-top: 68px;padding-bottom: 52px;">
+        <div class="pull-border" style="position:static;">
+            <div id="doctorList">
+            </div>
+        </div>
+    </div>
+    <div class="weui-tabbar his-foot">
+        <a href="../index.html" class="weui-tabbar__item">
+            <i class="icon-home weui-tabbar__icon"></i>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a id="consultStatus" href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+            <i class=" icon-comments weui-tabbar__icon"></i>
+            <p class="weui-tabbar__label">咨询</p>
+        </a>
+        <a href="../discovery/discovery.html" class="weui-tabbar__item">
+            <i class="icon-globe weui-tabbar__icon"></i>
+            <p class="weui-tabbar__label">发现</p>
+        </a>
+        <a href="../personal/personal.html" class="weui-tabbar__item">
+            <i class="icon-user weui-tabbar__icon"></i>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+</template>
+<script type="text/javascript">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    });
+</script>

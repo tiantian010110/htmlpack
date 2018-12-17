@@ -1,0 +1,169 @@
+<title></title>
+<style type="text/css">
+    .tips-view {
+        padding: 20px 12px;
+        background: #FFFFFF;
+        font-size: 13px;
+        text-align: right;
+        color: #666;
+    }
+    
+    .tips-view span {
+        position: relative;
+        padding-left: 13px;
+        margin-left: 20px;
+    }
+    
+    .tips-view span:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 9px;
+        height: 9px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    
+    .tips-view span:nth-child(1)::before {
+        background: #A3C37A;
+    }
+    
+    .tips-view span:nth-child(2)::before {
+        background: #E6A85F;
+    }
+    
+    .tips-view span:nth-child(3)::before {
+        background: #ccc;
+    }
+    
+    .mui-card-header {
+        padding-left: 0;
+        padding-right: 0;
+    }
+    
+    .lest {
+        padding: 1px 0;
+        color: #fff;
+        /*white-space: nowrap;*/
+    }
+    
+    .lest.full {
+        color: #d9d9d9;
+    }
+    
+    .hospital-border .lest {
+        position: relative;
+        line-height: 1;
+        text-align: center;
+    }
+    
+    .hospital-border .lest:after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+        z-index: 1;
+        display: none;
+    }
+    
+    .hospital-border .lest:last-child::after {
+        height: 0;
+    }
+    
+    .middle {
+        position: absolute;
+        height: calc(100% - 60px);
+        z-index: 1000;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        width: calc(100% - 50px);
+        background: url(//image-1252304461.file.myqcloud.com/image/hospital_stop/stop_bj.png) repeat-y top left;
+        background-size: 100% 100%;
+        padding: 15px;
+    }
+    
+    .head-view {
+        height: 72px;
+        display: flex;
+        display: -webkit-flex;
+        flex-direction: row;
+        align-items: center;
+        background: #FFFFFF;
+        padding: 0 12px;
+        justify-content: space-between;
+    }
+    
+    .head-view .head-img-box {
+        height: 48px;
+        width: 48px;
+        overflow: hidden;
+        border-radius: 50%;
+    }
+    
+    .head-view .head-img-box img {
+        height: 100%;
+        width: 100%;
+    }
+    
+    .head-view .more {
+        font-size: 13px;
+        color: #999999;
+    }
+    
+    .head-view .name {
+        margin-left: 8px;
+        font-size: 17px;
+        color: #222222;
+    }
+    
+    .weui-panel:before {
+        left: 12px;
+        right: 12px;
+        border-color: #F2F2F2;
+    }
+</style>
+<template>
+<div id="wrapper">
+    <div id="suquanxin_tips" class="paddingLeft12 middle-color his-flex his-hide"
+         style="justify-content: initial;-webkit-justify-content: initial;background: #F9EEE3;">
+        <span class="icon-laba font18"></span>
+        <div class="padding-10-12 font13 lineHeight18">
+            <p>为了减少您的看诊等待时间，给您带来更好的看诊体验，预约需先支付诊费。</p>
+        </div>
+    </div>
+    <a id="doctor_link" href="javascript:void(0);" class="marginBottom10" style="display: block;">
+        <div class="head-view">
+            <div class="lyb-flex-align-center">
+                <div class="head-img-box">
+                    <img src="" alt="">
+                </div>
+                <div class="name"></div>
+            </div>
+            <div class="more">大夫主页</div>
+        </div>
+    </a>
+    <div class="tips-view">
+        <span class="font13">可微信预约</span>
+        <span class="font13">可电话预约</span>
+        <span class="font13">已约满</span>
+    </div>
+    <div class="weui-panel">
+        <div id="box" class="weui-panel__bd padding-10-12 paddingTop0"></div>
+    </div>
+</div>
+</template>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    });
+</script>

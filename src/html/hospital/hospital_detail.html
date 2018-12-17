@@ -1,0 +1,24 @@
+<title>预约门诊</title>
+<style type="text/css">
+    .weui-cell:before {
+        border: none;
+        left: 0;
+    }
+</style>
+<template>
+<div id="wrapper" class="pull-wrapper" style="position: static;">
+    <div class="pull-border" style="position: static;">
+        <div>
+            <a id="hospital_img" href="hospital_inst.html?id=${params.id}" class="marginBottom10" style="height: 160px;display: block;"></a>
+            <div id="doctor_list" class="weui-cells">
+                <div class="padding-10-15"><span class="title-block">医馆出诊大夫</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+</template>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    })
+</script>

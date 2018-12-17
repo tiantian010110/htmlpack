@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+<title>病症</title>
+<link rel="stylesheet" type="text/css" href="../../statics/css/load.css?4500dab0"></link>
+
+<style type="text/css">
+    a.illness-item {
+        display: inline-block;
+        border: solid 1px #e6e6e6;
+        padding: 7px 12px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        color: #0d0d0d;
+        border-radius: 2px;
+    }
+</style>
+</head>
+<body style="visibility: hidden;">
+
+    <header class="his-head">
+        <div class="weui-search-bar" id="searchBar">
+            <form class="weui-search-bar__form">
+                <div class="weui-search-bar__box">
+                    <input type="search" class="weui-search-bar__input" placeholder="搜索症状"/>
+                    <!--<a href="javascript:" class="weui-icon-clear" id="searchClear"></a>-->
+                </div>
+                <label class="weui-search-bar__label his-hide">
+                    <span></span>
+                </label>
+            </form>
+            <a href="javascript:" class="weui-search-bar__cancel-btn" id="searchCancel">取消</a>
+        </div>
+    </header>
+    <div class="" style="margin-top: 58px;">
+        <div id="list" class="" style="overflow: hidden;"></div>
+    </div>
+</body>
+<script type="text/javascript" src="../../statics/js/load.js?d87b1f4c"></script>
+
+<script type="text/javascript" src="../../statics/js/module.js?83824138"></script>
+
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    });
+</script>
+</html>

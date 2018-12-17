@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>绑定正安会员</title>
+    <script type="text/javascript" src="../../resources/js/load.js"></script>
+    <style type="text/css">
+        html,
+        body {
+            position: static;
+            height: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .weui-label {
+            width: 60px;
+        }
+    </style>
+</head>
+
+<body style="visibility:hidden;">
+<div id="form" class="weui-cells weui-cells_form" style="margin-top: 80px;">
+    <div class="weui-cell weui-cell_vcode">
+        <div class="weui-cell__hd">
+            <label class="weui-label">手机号</label>
+        </div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" type="tel" name="mobile" required placeholder="请输入手机号" maxlength="11"
+                   pattern="^1[0-9]{10}" name="mobile">
+        </div>
+        <div class="weui-cell__ft">
+            <button id="sendCode" class="weui-vcode-btn font14" style="width: 90px;">获取验证码</button>
+        </div>
+    </div>
+    <div class="weui-cell">
+        <div class="weui-cell__hd"><label class="weui-label">验证码</label></div>
+        <div class="weui-cell__bd">
+            <input class="weui-input" name="code" required maxlength="6" type="text" placeholder="请输入验证码">
+        </div>
+    </div>
+    <div id="nameList" class=" weui-cell_access his-hide">
+        <div class="weui-cell__hd"><label class="weui-label">会员姓名</label></div>
+        <div class="weui-cell__bd">
+            <div id="picker_selector" class="picker-selector"></div>
+            <input name="zanName" class="weui-input" type="text" required readonly="readonly"
+                   placeholder="请选择您的真实姓名"/>
+            <input name="zanId" type="hidden"/>
+            <input name="zanMobile" type="hidden"/>
+        </div>
+    </div>
+</div>
+<div class="paddingLeft10 paddingRight10" style="margin-top: 80px;">
+    <button id="next" type="button" disabled class="weui-btn weui-btn_warn" style="height: 46px;">提交
+    </button>
+</div>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function () {
+        lyb.parse();
+        weui.form.checkIfBlur('#form');
+        var mobile = document.querySelector('input[name=mobile]'),
+            zanName = document.querySelector('input[name=zanName]'),
+            zanId = document.querySelector('input[name=zanId]'),
+            zanMobile = document.querySelector('input[name=zanMobile]'),
+            nameList = document.querySelector('#nameList'),
+            code = document.querySelector('input[name=code]'),
+            submitBtn = document.querySelector('#next');
+
+        document.querySelector('#sendCode').addEventListener("tap", function () {
+            var that = this;
+            this.setAttribute('disabled', "disabled");
+            if (!/^1[3-9][0-9]{9}/.test(mobile.value)) {
+                weui.topTips("请填写正确的手机号");
+                this.removeAttribute('disabled');
+                return;
+            }
+
+            lyb.ajax({
+                url: ctx + "wxInfo/getBindValidate",
+                data: {
+                    mobile: mobile.value
+                },
+                type: "post",
+                success: function (result) {
+                    if (result.success) {
+                        lyb.toast('获取验证码成功!');
+                        var start = 91;
+                        that.innerText = --start + 's';
+                        var myInterval = window.setInterval(function () {
+                            that.innerText = --start + 's';
+                            if (start == 0) {
+                                window.clearInterval(myInterval);
+                                that.removeAttribute('disabled');
+                                that.innerText = '获取验证码';
+                            }
+                        }, 1000);
+                    } else {
+                        lyb.toast(result.msg);
+                        that.removeAttribute('disabled');
+                    }
+                }
+            });
+        });
+
+        var pickerArray;
+        code.addEventListener('input', function () {
+            var that = this;
+            if (mobile.value.length == 11 && this.value.length == 6) {
+                lyb.ajax(ctx + 'wxInfo/getZAMemberByMobile', {
+                    type: 'post',
+                    dataType: 'json',
+                    data: {
+                        code: this.value,
+                        mobile: mobile.value
+                    },
+                    success: function (result) {
+                        if (result.success) {
+                            var array = result.data || [];
+                            that.blur();
+                            if (result.data.length == 0) {
+                                lyb.topTips('当前手机号没有匹配到正安会员!');
+                            } else {
+                                for (var i = 0, len = array.length; i < len; i++) {
+                                    array[i]['label'] = array[i]['text'];
+                                }
+                                pickerArray = array;
+                                nameList.classList.remove('his-hide');
+                                submitBtn.removeAttribute('disabled');
+                            }
+                        } else {
+                            lyb.topTips(result.msg);
+                            nameList.classList.add('his-hide');
+                            that.removeAttribute('disabled');
+                        }
+                    }
+                });
+            }
+        });
+
+        submitBtn.addEventListener('tap', function () {
+            var that = this;
+            if (this.disabled) {
+                return;
+            }
+            this.setAttribute('disabled', "disabled");
+            this.classList.add('gray-background');
+
+            weui.form.validate('#form', function (error) {
+                if (!error) {
+                    lyb.ajax(ctx + 'wxInfo/bind/card', {
+                        type: 'post',
+                        dataType: 'json',
+                        data: {
+                            mobile: mobile.value,
+                            id: zanId.value
+                        },
+                        success: function (result) {
+                            if (result.success) {
+                                lyb.toast('绑定成功!', function () {
+                                    if (result.data.checkPd) {
+                                        if (sessionStorage.getItem('callbackUrl')) {
+                                            window.location.href = sessionStorage.getItem('callbackUrl');
+                                            sessionStorage.removeItem('callbackUrl');
+                                        } else {
+                                            window.location.href = ctx + 'html/personal/index.html';
+                                        }
+                                    } else {
+                                        window.location.href = ctx + 'html/personal/payPassword.html?zaId=' + zanId.value;
+                                    }
+                                });
+
+                            } else {
+                                lyb.toast(result.msg);
+                                that.removeAttribute('disabled');
+                                that.classList.remove('gray-background');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        document.getElementById('picker_selector').addEventListener('click', function () {
+            weui.picker(pickerArray, {
+                onConfirm: function (result) {
+                    zanId.value = result[0].value;
+                    zanName.value = result[0].label;
+                    zanMobile.value = result[0].mobile;
+                },
+                id: 'name'
+            });
+        });
+    });
+</script>
+</body>
+
+</html>

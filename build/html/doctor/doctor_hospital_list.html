@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+<title>明医列表</title>
+<link rel="stylesheet" type="text/css" href="../../statics/css/load.css?4500dab0"></link>
+
+<style type="text/css">
+    .weui-cell:before {
+        border: none;
+        left: 0;
+    }
+    
+    .his-calendar {
+        margin-bottom: 10px;
+    }
+    
+    .his-calendar .his-calendar-table caption.calendar-caption .caption-title.caption-sub-title {
+        display: none;
+    }
+    
+    .area-selector,
+    .hospital-selector,
+    .date-selector {
+        position: relative;
+        font-size: 12px;
+    }
+    
+    .select-btn.red-color:after {
+        border-color: #c03e3e;
+    }
+    
+    .area-selector:after,
+    .hospital-selector:after,
+    .date-selector:after {
+        content: " ";
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        border-width: 0 1px 1px 0;
+        border-color: #C8C8CD;
+        border-style: solid;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top: 50%;
+        margin-top: -4px;
+        right: 2px;
+    }
+    
+    #listBorder .weui-cells:before,
+    #listBorder .weui-cells:after {
+        height: 0;
+        border: none;
+    }
+    
+    .his-calendar .his-calendar-table td.calendar-day {
+        height: 36px;
+    }
+    
+    .his-calendar .his-calendar-table caption.calendar-caption,
+    .his-calendar .his-calendar-table .calendar-day.calendar-unvalid.active {
+        background: #dbab7c;
+        color: #fff;
+    }
+</style>
+</head>
+<body style="visibility: hidden;">
+
+<div class="his-head" style="border-bottom: solid 1px #f2f2f2;">
+    <div class="weui-search-bar no-before-line no-after-line" id="searchBar">
+        <form id="searchForm" class="weui-search-bar__form">
+            <div class="weui-search-bar__box">
+                <input type="text" class="weui-search-bar__input" value="${:decodeURIComponent(params.condition)}" placeholder="搜索大夫、病症"/>
+                <!--<a href="javascript:" class="weui-icon-clear" id="searchClear"></a>-->
+            </div>
+            <label class="weui-search-bar__label his-hide">
+                <span>${:decodeURIComponent(params.condition)}</span>
+            </label>
+        </form>
+        <a href="javascript:" class="weui-search-bar__cancel-btn his-hide" id="searchCancel">取消</a>
+    </div>
+    <div id="secondSearch" class="white-background" style="margin-top: -10px;">
+        <div class="his-flex his-center">
+            <div class="his-flex-grow" style="width:33.33%;">
+                    <span class="select-btn area-selector padding15${:decodeURIComponent(params.cityName || '全国') === '全国' ? '' : ' red-color'}"
+                          data-target="#cityList"
+                          style="display: inline-block;">${:decodeURIComponent(params.cityName || '全国').replace('市', '')}</span>
+            </div>
+            <div class="his-flex-grow" style="width:33.33%;">
+                    <span class="select-btn hospital-selector padding15" data-target="#hospitalList"
+                          style="display: inline-block;">医馆</span>
+            </div>
+            <div class="his-flex-grow" style="width:33.33%;">
+                    <span class="select-btn date-selector padding15" data-target="#calendar"
+                          style="display: inline-block;">日期</span>
+            </div>
+        </div>
+    </div>
+    <div id="listBorder" class="">
+        <div id="cityList" class="weui-cells weui-cells_radio his-hide"
+             style="position: relative;z-index: 1001;"></div>
+        <div id="hospitalList" class="weui-cells weui-cells_radio his-hide"
+             style="max-height: 320px;overflow: scroll;position: relative;z-index: 1001;"></div>
+        <div id="calendar" class="white-background paddingBottom0 his-hide"
+             style="position: relative;z-index: 1001;">
+            <div id="calendarList" class="padding15"
+                 style="max-height: 320px;overflow: scroll;border-bottom: solid 1px #f2f2f2;"></div>
+            <div class="his-right padding-5-15">
+                <button type="button" class="weui-btn weui-btn_mini weui-btn_warn clear-date radius2 his-noborder"
+                        style="background: #dbab7c;">不限
+                </button>
+            </div>
+        </div>
+        <div id="module" class="weui-mask_transparent his-hide"
+             style="top: 93px;background: rgba(0, 0, 0, 0.2);"></div>
+    </div>
+</div>
+<div id="wrapper" class="pull-wrapper" style="position: static;padding-top: 104px;">
+    <div class="pull-border" style="position: static;">
+        <div id="doctor_list"></div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" src="../../statics/js/load.js?d87b1f4c"></script>
+
+<script type="text/javascript" src="../../statics/js/module.js?83824138"></script>
+
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    });
+</script>
+</html>

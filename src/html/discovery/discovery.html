@@ -1,0 +1,97 @@
+<title>发现</title>
+<style type="text/css">
+    .his-grids {
+        display: -webkit-flex;
+        display: flex;
+        -webkit-flex: 1 1 auto;
+        flex: 1 1 auto;
+        -webkit-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-justify-content: space-between;
+        justify-content: space-between;
+        -webkit-align-content: space-between;
+        align-content: space-between;
+    }
+    
+    .his-grid-cell {
+        box-sizing: border-box;
+        border-left: none;
+        display: block;
+    }
+    
+    .before-dot {
+        position: relative;
+    }
+    
+    .before-dot:before {
+        content: '';
+        width: 3px;
+        height: 3px;
+        -webkit-border-radius: 50%;
+        border-radius: 50%;
+        display: inline-block;
+        background: #0D0D0D;
+        margin-right: 5px;
+        vertical-align: middle;
+    }
+    
+    .swiper-container {
+        height: 140px;
+    }
+    
+    .swiper-pagination-bullet-active {
+        background: #c03e3e;
+    }
+</style>
+<template>
+    <div id="wrapper" class="view-content" style="padding-bottom: 52px;">
+        <div class="paddingBottom10">
+            <div id="swipper_container" class="swiper-container marginBottom10">
+                <div id="swipper_border" class="swiper-wrapper"></div>
+                <!-- 如果需要分页器 -->
+                <div class="swiper-pagination"></div>
+            </div>
+            <div class="weui-panel weui-panel_access marginBottom10 his-hide">
+                <div class="weui-panel__hd deep-color his-flex">
+                    <span class="title-block">明医荐药</span>
+                    <a href="product_list.html" class="more">全部</a>
+                </div>
+                <div class="weui-panel__bd padding5">
+                    <div id="myjy" class="his-grids">
+                    </div>
+                </div>
+            </div>
+            <div class="weui-panel">
+                <div class="weui-panel__hd his-flex">
+                    <div class="deep-color"><span class="title-block">热点资讯</span></div>
+                    <a href="../article/art_list.html" class="more font12">全部</a>
+                </div>
+                <div id="list" class="weui-panel__bd"></div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-tabbar his-foot">
+        <a href="../index.html" class="weui-tabbar__item">
+            <i class="icon-home weui-tabbar__icon"></i>
+            <p class="weui-tabbar__label">首页</p>
+        </a>
+        <a id="consultStatus" href="../chat/chat_list.html" class="weui-tabbar__item">
+            <i class=" icon-comments weui-tabbar__icon"></i>
+            <p class="weui-tabbar__label">咨询</p>
+        </a>
+        <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+            <i class="icon-globe weui-tabbar__icon"></i>
+            <p class="weui-tabbar__label">发现</p>
+        </a>
+        <a href="../personal/personal.html" class="weui-tabbar__item">
+            <i class="icon-user weui-tabbar__icon"></i>
+            <p class="weui-tabbar__label">我的</p>
+        </a>
+    </div>
+</template>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    });
+</script>

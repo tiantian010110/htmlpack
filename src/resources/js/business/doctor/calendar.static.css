@@ -1,0 +1,75 @@
+@CHARSET "UTF-8";
+
+.his-calendar {
+    border-radius: 2px 2px 0 0;
+    margin-bottom: 20px;
+}
+
+.his-calendar:last-child {
+    margin-bottom: 0;
+}
+
+.his-calendar .his-calendar-table {
+    table-layout: fixed;
+    width: 100%;
+    border-radius: 2px 2px 0 0;
+    border-spacing: 0;
+    border-collapse: collapse;
+}
+
+.his-calendar .his-calendar-table caption.calendar-caption {
+    padding: 8px 0;
+    background: #c03e3e;
+    border-radius: 4px 4px 0 0;
+    color: #fff;
+}
+
+.his-calendar .his-calendar-table caption.calendar-caption .caption-title {
+    font-size: 17px;
+}
+
+.his-calendar .his-calendar-table caption.calendar-caption .caption-title.caption-sub-title {
+    font-size: 12px;
+}
+
+.his-calendar .his-calendar-table th {
+    height: 35px;
+    max-width: 48px;
+    background: #F7F7F7;
+    border: solid 1px #E6E6E6;
+    font-size: 14px;
+    color: #666666;
+    font-weight: normal;
+}
+
+.his-calendar .his-calendar-table td.calendar-day {
+    max-width: 48px;
+    height: 44px;
+    text-align: left;
+    border: solid 1px #e6e6e6;
+    position: relative;
+    font-size: 12px;
+    vertical-align: text-top;
+    line-height: 1.6;
+    padding-left: 4px;
+    color: #666;
+}
+
+.his-calendar .his-calendar-table td.calendar-day.calendar-unvalid {
+    opacity: .8;
+}
+
+.his-calendar .his-calendar-table td.calendar-day.calendar-overflow {
+    opacity: .2;
+}
+
+.hospital-border {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.android .hospital-border div {
+    padding: 3px 0 0 0;
+}

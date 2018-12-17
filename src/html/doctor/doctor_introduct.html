@@ -1,0 +1,83 @@
+<title>医生详情</title>
+<style type="text/css">
+    .illness-item {
+        margin: 0 8px 8px 0;
+        border-radius: 100px;
+        padding: 5px 12px;
+        display: inline-block;
+    }
+</style>
+<template>
+<div id="doctor">
+    <div class="marginBottom10">
+        <div class=""
+             style="background: rgba(192, 62, 62, 0.06) url(//image-1252304461.file.myqcloud.com/image/yishengzhuyebj.png) no-repeat left top;background-size: 100% 100%;">
+            <div class="padding-20-15 his-flex">
+                <img id="head_url" src="//image-1252304461.file.myqcloud.com/image/doctor.png" alt=""
+                     style="width: 56px;height: 56px;-webkit-border-radius: 50%;-moz-border-radius: 50%;border-radius: 50%;"/>
+                <div class="his-flex-grow marginLeft5">
+                    <div id="doctor_name" class="font18 doctor-name white-color marginBottom10"></div>
+                    <div id="doctor_info" class="doctor-info font12 white-color" style="white-space: nowrap;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weui-panel marginBottom10">
+        <div class="weui-panel__hd">
+            <span class="title-block">医生简介</span>
+        </div>
+        <div id="inst" class="weui-panel__bd padding15 light-color"></div>
+    </div>
+    <div class="weui-panel marginBottom10 his-hide">
+        <div class="weui-panel__hd">
+            <span class="title-block">门诊预约费用</span>
+        </div>
+        <div class="weui-panel__bd padding15">
+            <div class="marginBottom10 font16 deep-color dot">会员卡支付</div>
+            <div class="marginBottom15">初诊费用 <span id="mzhycz" class="red-color"></span> 元/次，复诊费用 <span id="mzhyfz" class="red-color"></span>
+                元/次
+            </div>
+            <div class="marginBottom10 font16 deep-color dot">非会员卡支付</div>
+            <div class="marginBottom5">初诊费用 <span id="mzfhycz" class="red-color"></span> 元/次，复诊费用 <span id="mzfhyfz" class="red-color"></span>
+                元/次
+            </div>
+        </div>
+    </div>
+    <div class="weui-panel marginBottom10 his-hide">
+        <div class="weui-panel__hd">
+            <span class="title-block">网诊服务费用</span>
+        </div>
+        <div class="weui-panel__bd padding15">
+            <div class="marginBottom10 font16 deep-color dot">图文问诊</div>
+            <div class="marginBottom15">初诊费用 <span id="twhycz" class="red-color"></span> 元/次，复诊费用 <span id="twhyfz" class="red-color"></span>
+                元/次
+            </div>
+            <div class="marginBottom10 font16 deep-color dot">电话问诊</div>
+            <div class="marginBottom5">初诊费用 <span id="dhhycz" class="red-color"></span> 元/次，复诊费用 <span id="dhhyfz" class="red-color"></span>
+                元/次
+            </div>
+        </div>
+    </div>
+    <div id="notice_box" class="weui-panel marginBottom10 his-hide">
+        <div class="weui-panel__hd his-flex">
+            <span class="title-block">医生公告</span>
+            <a href="../notice/notice_list.html?id=${params.id}" class="more">查看全部</a>
+        </div>
+        <div id="gonggao" class="weui-panel__bd padding15 light-color">
+
+        </div>
+    </div>
+    <div class="weui-panel marginBottom10">
+        <div class="weui-panel__hd">
+            <span class="title-block">医生擅长</span>
+        </div>
+        <div id="shanchang" class="weui-panel__bd padding15 paddingBottom10" style="padding-bottom: 7px;"></div>
+    </div>
+</div>
+</template>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    })
+</script>

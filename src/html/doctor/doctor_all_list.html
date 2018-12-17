@@ -1,0 +1,50 @@
+<title>明医列表</title>
+<style type="text/css">
+    div {
+        margin: 0;
+        border: 0;
+        padding: 0;
+    }
+    
+    .line-status {
+        position: relative;
+        float: right;
+        padding-left: 15px;
+    }
+    
+    .line-status:before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 0;
+        right: 0;
+        height: 11px;
+        width: 11px;
+        background-color: #ccc;
+        border-radius: 50%;
+    }
+    
+    .line-status.online:before {
+        background-color: #A1C47A !important;
+        ;
+    }
+    
+    .illness-view .illness-item {
+        margin-bottom: 0;
+    }
+</style>
+<template>
+<div class="his-header white-background his-after-line">
+    <div class="his-title-line"><span id="title" class="his-title-node light-color font12">根据<span class="red-color">`${:decodeURIComponent(params.condition)}`</span>为您推荐</span></div>
+</div>
+<div id="wrapper" class="pull-wrapper his-has-header">
+    <div class="pull-border paddingTop10">
+        <div id="doctorList" class="weui-cells"></div>
+    </div>
+</div>
+</template>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    })
+</script>

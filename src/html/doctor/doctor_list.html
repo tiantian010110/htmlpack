@@ -1,0 +1,141 @@
+<title>明医列表</title>
+<style type="text/css">
+    div {
+        margin: 0;
+        border: 0;
+        padding: 0;
+    }
+    
+    .line-status {
+        position: relative;
+        float: right;
+        padding-left: 15px;
+    }
+    
+    .line-status:before {
+        content: '';
+        position: absolute;
+        top: 3px;
+        left: 0;
+        right: 0;
+        height: 11px;
+        width: 11px;
+        background-color: #ccc;
+        border-radius: 50%;
+    }
+    
+    .line-status.online:before {
+        background-color: #A1C47A !important;
+        ;
+    }
+    
+    .illness-view .illness-item {
+        margin-bottom: 0;
+    }
+    
+    .his-calendar {
+        margin-bottom: 10px;
+    }
+    
+    .his-calendar .his-calendar-table caption.calendar-caption .caption-title.caption-sub-title {
+        display: none;
+    }
+    
+    .area-selector,
+    .hospital-selector,
+    .date-selector {
+        position: relative;
+        font-size: 12px;
+    }
+    
+    .select-btn.red-color:after {
+        border-color: #c03e3e;
+    }
+    
+    .area-selector:after,
+    .hospital-selector:after,
+    .date-selector:after {
+        content: " ";
+        display: inline-block;
+        height: 6px;
+        width: 6px;
+        border-width: 0 1px 1px 0;
+        border-color: #C8C8CD;
+        border-style: solid;
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+        position: absolute;
+        top: 50%;
+        margin-top: -4px;
+        right: 2px;
+    }
+    
+    #listBorder .weui-cells:before,
+    #listBorder .weui-cells:after {
+        height: 0;
+        border: none;
+    }
+    
+    .his-calendar .his-calendar-table td.calendar-day {
+        height: 36px;
+    }
+    
+    .his-calendar .his-calendar-table caption.calendar-caption,
+    .his-calendar .his-calendar-table .calendar-day.calendar-unvalid.active {
+        background: #dbab7c;
+        color: #fff;
+    }
+</style>
+<template>
+<div class="his-head" style="border-bottom: solid 1px #f2f2f2;">
+    <div class="white-background his-center his-after-line padding10">
+        <div class="his-title-line"><span id="title" class="his-title-node light-color font12">根据<span
+                class="red-color">`${:decodeURIComponent(params.condition)}`</span>为您推荐</span></div>
+    </div>
+    <div class="white-background" style="margin-top: -10px;">
+        <div class="his-flex his-center">
+            <div class="his-flex-grow" style="width:33.33%;">
+                <span class="select-btn area-selector padding15${:decodeURIComponent(params.cityName || '全国') === '全国' ? '' : ' red-color'}"
+                      data-target="#cityList"
+                      style="display: inline-block;">${:decodeURIComponent(params.cityName || '全国').replace('市', '')}</span>
+            </div>
+            <div class="his-flex-grow" style="width:33.33%;">
+                <span class="select-btn hospital-selector padding15" data-target="#hospitalList"
+                      style="display: inline-block;">医馆</span>
+            </div>
+            <div class="his-flex-grow" style="width:33.33%;">
+                <span class="select-btn date-selector padding15" data-target="#calendar" style="display: inline-block;">日期</span>
+            </div>
+        </div>
+        <div id="listBorder" class="">
+            <div id="cityList" class="weui-cells weui-cells_radio his-hide"
+                 style="position: relative;z-index: 1001;"></div>
+            <div id="hospitalList" class="weui-cells weui-cells_radio his-hide"
+                 style="max-height: 320px;overflow: scroll;position: relative;z-index: 1001;"></div>
+            <div id="calendar" class="white-background paddingBottom0 his-hide"
+                 style="position: relative;z-index: 1001;">
+                <div id="calendarList" class="padding15"
+                     style="max-height: 320px;overflow: scroll;border-bottom: solid 1px #f2f2f2;"></div>
+                <div class="his-right padding-5-15">
+                    <button type="button" class="weui-btn weui-btn_mini weui-btn_warn clear-date radius2 his-noborder"
+                            style="background: #dbab7c;">不限
+                    </button>
+                </div>
+            </div>
+            <div id="module" class="weui-mask_transparent his-hide"
+                 style="top: 81px;background: rgba(0, 0, 0, 0.2);"></div>
+        </div>
+    </div>
+</div>
+<div id="wrapper" class="pull-wrapper" style="position: relative;top: 72px;">
+    <div class="pull-border paddingTop10" style="position: static;">
+        <div id="doctorList" class="weui-cells"></div>
+    </div>
+</div>
+</template>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    })
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+    <title>忘记密码</title>
+    <script type="text/javascript" src="../../resources/js/load.js"></script>
+    <style type="text/css">
+        html,
+        body {
+            position: static;
+            height: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+    </style>
+</head>
+
+<body style="visibility:hidden;">
+<div style="padding-bottom: 56px;">
+    <div class="font16 deep-color his-center" style="padding: 40px 0;">验证会员身份</div>
+    <div id="payForm" class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label" for="name">会员用户名</label></div>
+            <div id="name" class="weui-cell__bd light-color"></div>
+            <div class="weui-cell__ft"><i class="weui-icon-warn"></i></div>
+        </div>
+        <div class="weui-cell weui-cell_vcode">
+            <div class="weui-cell__hd"><label class="weui-label" for="mobile">会员手机号</label></div>
+            <div id="mobile" class="weui-cell__bd light-color"></div>
+            <div class="weui-cell__ft"><i class="weui-icon-warn"></i></div>
+            <div class="weui-cell__ft">
+                <button id="sendCode" type="button" disabled
+                        class="weui-vcode-btn red-color font16">获取验证码
+                </button>
+            </div>
+        </div>
+        <div class="weui-cell">
+            <div class="weui-cell__hd"><label class="weui-label" for="code">验证码</label></div>
+            <div class="weui-cell__bd">
+                <input id="code" name="code" maxlength="6" type="tel" class="weui-input" placeholder="请输入验证码"
+                       required/>
+            </div>
+            <div class="weui-cell__ft"><i class="weui-icon-warn"></i></div>
+        </div>
+    </div>
+    <button id="pay" type="button" class="weui-btn weui-btn_warn his-btn-block">下一步</button>
+    <script type="text/javascript" charset="utf-8">
+        window.addEventListener('complete', function () {
+            lyb.require();
+        });
+    </script>
+</body>
+
+</html>

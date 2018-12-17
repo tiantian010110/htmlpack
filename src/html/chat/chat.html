@@ -1,0 +1,265 @@
+<title>在线咨询</title>
+<style type="text/css">
+    input.webim-msg-input {
+        border: 1px solid #F3F3F3;
+        border-radius: 2px;
+        height: 34px;
+        line-height: 34px;
+        margin: 0;
+        -webkit-appearance: none;
+    }
+    
+    .his-table-view-cell {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        display: -webkit-flex;
+        -webkit-align-items: center;
+    }
+    
+    .webim-bottom .mui-table-view-cell {
+        background-color: inherit;
+    }
+    
+    .mui-table-view-cell>.mui-btn,
+    .mui-table-view-cell>.mui-badge,
+    .mui-table-view-cell>.mui-switch,
+    .mui-table-view-cell>a>.mui-btn,
+    .mui-table-view-cell>a>.mui-badge,
+    .mui-table-view-cell>a>.mui-switch {
+        right: 20px;
+    }
+    
+    #webim {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+    
+    .his-webim-item-border.error .error-icon {
+        font-weight: bold;
+        color: #fff;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        font-size: 12px;
+        background: #e64340;
+        display: block;
+        text-align: center;
+        font-style: normal;
+        position: absolute;
+        left: -25px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    
+    .progress-icon:after {
+        content: '';
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        border: solid 1px #e64340;
+        display: inline-block;
+        position: absolute;
+        right: -16px;
+        top: -8px;
+        background: #fff;
+        box-sizing: border-box;
+    }
+    
+    audio {
+        width: 238px;
+        height: 33px;
+    }
+    
+    .send-img {
+        background: url("//image-1252304461.file.myqcloud.com/image/send-img.png") center center no-repeat;
+        background-size: 100%;
+    }
+    
+    .send-img.disabled {
+        background-image: url("//image-1252304461.file.myqcloud.com/image/dis-send-img.png");
+    }
+    
+    .send-img input {
+        display: block;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        position: absolute;
+        top: 0;
+    }
+    
+    .send-img.disabled input {
+        display: none;
+    }
+    
+    #mask {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+    }
+    
+    html input[disabled] {
+        opacity: 1 !important;
+    }
+    
+    .inquiry {
+        position: absolute;
+        z-index: 100;
+        /* border: solid 1px #d6d6d6; */
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        border-radius: 50%;
+        bottom: 80px;
+        left: 10px;
+        background: #c03e3e;
+        box-shadow: 0 0 4px rgba(0, 0, 0, 0.14), 0 4px 8px rgba(0, 0, 0, 0.28);
+        color: #fff;
+        font-size: 12px;
+    }
+    
+    .loading-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .loading-box .loadding-modal {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+    
+    .loading-box .his-spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .keyboard-focus {
+        bottom: 20px;
+        transition: bottom 0.6s;
+    }
+    
+    .recording {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        z-index: 1000;
+        width: 150px;
+        background: rgba(99, 99, 99, 0.8);
+        -webkit-border-radius: 6px;
+        border-radius: 6px;
+    }
+    
+    #voice-btn.weui-btn:after {
+        border-radius: 3px;
+    }
+    
+    .weui-navbar .weui-navbar__item {
+        background: #fff;
+        padding: 15px 0;
+        border-bottom: none;
+        white-space: nowrap;
+        font-size: 14px;
+        position: relative;
+        color: #333;
+    }
+    
+    .weui-navbar .weui-navbar__item.lyb-active .weui-navbar__item__text {
+        padding: 0;
+        color: #C03E3E;
+        background: transparent;
+    }
+    
+    .weui-navbar .weui-navbar__item .weui-navbar__item__underline {
+        height: 2px;
+        width: 56px;
+        position: absolute;
+        left: 50%;
+        bottom: 5px;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-radius: 2px;
+        background: #c03e3e;
+        display: none;
+    }
+    
+    .weui-navbar .weui-navbar__item.lyb-active .weui-navbar__item__underline {
+        display: inline-block;
+    }
+    
+    .pull-wrapper {
+        position: static;
+        overflow: scroll;
+    }
+</style>
+
+<template>
+<div id="tabs" class="weui-navbar weui-tab-titles" style="position: fixed;left: 0;right: 0;z-index: 2;">
+    <a class="weui-navbar__item" href="../doctor/doctor_detail.html?id=${params.id}&shareId=${params.shareId}">
+        <span class="weui-navbar__item__text">医生主页</span>
+        <div class="weui-navbar__item__underline"></div>
+    </a>
+    <a class="weui-navbar__item lyb-active" href="javascript:;">
+        <span class="weui-navbar__item__text">在线咨询</span>
+        <div class="weui-navbar__item__underline"></div>
+    </a>
+    <a class="weui-navbar__item" href="../scheme/my_scheme_list.html?id=${params.id}&shareId=${params.shareId}">
+        <span class="weui-navbar__item__text">调理方案</span>
+        <div class="weui-navbar__item__underline"></div>
+    </a>
+</div>
+<div id="im-wrapper" class="pull-wrapper" style="padding: 46px 0 18px 0;">
+    <div class="pull-border">
+        <div id="chatWindow" class="his-webim-container"></div>
+    </div>
+</div>
+<div class="inquiry his-hide">问诊单</div>
+<div class="webim-bottom" style="position: fixed;z-index: 3;">
+    <div id="noBuyService" class="white-background padding10" style="border-top: solid 1px #ebebeb;">
+        <form id="msg_form" class="his-flex his-flex-grow">
+            <i id="text-icon" class="ico-microphone box-icon his-flex-unshrink"></i>
+            <input id="msg_input" type="search" disabled value="${:decodeURIComponent(params.text)}"
+                   class="webim-msg-input marginRight10 marginLeft10 paddingLeft5 paddingRight5 his-flex-grow font14">
+            <div id="send_Img" class="send-img disabled marginRight10 his-flex-unshrink"
+                 style="padding: 0;position: relative;overflow: hidden;width: 34px;height: 34px;">
+                <input name="files" type="file" accept="image/*"/>
+            </div>
+            <button id="send_btn" disabled="disabled" type="submit" style="line-height: 2em;padding: 4px 10px;"
+                    class="light-color weui-btn weui-btn_mini weui-btn_warn his-noborder his-flex-unshrink radius2">发送
+            </button>
+        </form>
+        <div class="his-flex his-flex-grow his-hide">
+            <i id="voice-icon" class="ico-keyboard box-icon his-flex-unshrink"></i>
+            <button id="voice-btn" type="button" class="weui-btn weui-btn_default radius3 marginLeft10 font14"
+                    style="line-height: 2em;padding: 3px 10px;">按住 说话
+            </button>
+        </div>
+        <div id="mask"></div>
+    </div>
+</div>
+</template>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    })
+</script>

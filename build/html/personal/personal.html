@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+<title>个人中心</title>
+<link rel="stylesheet" type="text/css" href="../../statics/css/load.css?4500dab0"></link>
+
+<style type="text/css">
+    .his-float-box {
+        background: #FFF;
+    }
+    
+    .float-box-inner {
+        text-align: center;
+        display: inline-block !important;
+        width: 25%;
+        -webkit-align-items: center;
+        align-items: center;
+        margin: 0;
+        position: relative;
+        padding: 4px 0 16px 0;
+    }
+    
+    .float-box-inner .money {
+        text-align: center;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
+    .float-box-inner .money .box-icon {
+        display: inline-block;
+        width: 22px;
+        height: 22px;
+        background-size: 100%;
+        margin-bottom: 8px;
+    }
+    
+    .icon-daifukuan {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/daifukuan_icon.png) center center no-repeat;
+    }
+    
+    .icon-daishouhuo {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/daishouhuo_icon.png) center center no-repeat;
+    }
+    
+    .icon-yiwancheng {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/yiwancheng_icon.png) center center no-repeat;
+    }
+    
+    .icon-yituikuan {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/yituikuan_icon.png) center center no-repeat;
+    }
+    
+    .icon-wodeyuyue {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/wodeyuyue_icon.png) center center no-repeat;
+    }
+    
+    .icon-kanzhenjilu {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/kanzhenjilu_icon.png) center center no-repeat;
+    }
+    
+    .icon-huanzhedangan {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/huanzhedangan_icon.png) center center no-repeat;
+    }
+    
+    .icon-shouhuodizhi {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/shouhuodizhi_icon.png) center center no-repeat;
+    }
+    
+    .icon-youhuiquan {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/youhuiquan_icon.png) center center no-repeat;
+    }
+    
+    .icon-huiyuanka {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/huiyuanka_icon.png) center center no-repeat;
+    }
+    
+    .icon-wodetaocan {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/wodetaocan_icon.png) center center no-repeat;
+    }
+    
+    .icon-wodezhanke {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/wodezhuanke_icon.png) center center no-repeat;
+    }
+    
+    .icon-wodejiangzuo {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/wodejiangzuo_icon.png) center center no-repeat;
+    }
+    
+    .icon-wodebaoxian {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/wodebaoxian_icon.png) center center no-repeat;
+    }
+    
+    .icon-wodetiwen {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/wodezixun_icon.png) center center no-repeat;
+    }
+    
+    .icon-carelist {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/guanzhu_icon.png) center center no-repeat;
+    }
+    
+    .icon-kanzhenyisheng {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/kanzhenyisheng_icon.png) center center no-repeat;
+    }
+    
+    .icon-dikoujin {
+        background: url(//image-1252304461.file.myqcloud.com/image/personal/dikoujin_icon.png) center center no-repeat;
+    }
+    
+    .weui-panel:after,
+    .weui-panel:before,
+    .weui-panel__hd:after {
+        height: 0;
+        border-bottom: none;
+        border-top: none;
+    }
+    
+    .weui-cell_access:active {
+        background-color: transparent;
+    }
+    
+    .more:after {
+        border-color: #999;
+        border-width: 1px 1px 0 0;
+    }
+    
+    .bind-user:last-child {
+        margin-bottom: 0!important;
+    }
+    
+    .add-family {
+        position: relative;
+        padding-left: 14px!important;
+        line-height: initial;
+        float: right;
+    }
+    
+    .add-family:before,
+    .add-family:after {
+        content: '';
+        position: absolute;
+        width: 1px;
+        height: 21px;
+        display: inline-block;
+        background: #C03E3E;
+        -webkit-transform: translateY(-50%) scale(0.5);
+        ;
+        transform: translateY(-50%) scale(0.5);
+        left: 5px;
+        top: 50%;
+    }
+    
+    .add-family:after {
+        width: 21px;
+        height: 1px;
+        left: -5px;
+    }
+</style>
+</head>
+<body style="visibility: hidden;">
+
+    <div class="view-content" style="padding-bottom: 52px;">
+        <div id="bg" class="weui-cells marginBottom10">
+            <div id="viewInfo" class="weui-cell weui-cell_access unlogin" style="padding: 16px 12px;">
+                <div class="weui-cell__hd marginRight10" style="width: 60px;height: 60px;border-radius: 50%;overflow: hidden;">
+                    <img id="head_url" alt="" data-src="//image-1252304461.file.myqcloud.com/image/personal/mrtx_icon.png" style="width: 100%;height: 100%;" />
+                </div>
+                <div class="weui-cell__bd">
+                    <div id="loginStatus" class="his-hide">
+                        <div id="name" class="marginBottom5 deep-color"></div>
+                        <div id="info" class="font12 middle-color">未登录，就诊前请先完善本人信息</div>
+                    </div>
+                </div>
+                <div class="weui-cell__ft"></div>
+            </div>
+        </div>
+        <div class="weui-panel marginBottom10">
+            <div class="weui-panel__hd his-flex" style="padding: 16px 12px;">
+                <span class="fontBold deep-color">我的订单</span>
+                <a href="javascript: void(0);" class="more font12 link light-color" data-page="${params.ctx}html/order/order_list.html#all">全部</a>
+            </div>
+            <div class="weui-panel__bd">
+                <div class="his-float-box his-flex">
+                    <a class="float-box-inner" href="javascript: void(0);" data-page="${params.ctx}html/order/order_list.html#unpay">
+                        <div class="money">
+                            <i class="icon-daifukuan box-icon"></i>
+                            <div class="deep-color font12">待付款</div>
+                        </div>
+                    </a>
+                    <a class="float-box-inner" href="javascript: void(0);" data-page="${params.ctx}html/order/order_list.html#payed">
+                        <div class="money">
+                            <i class="icon-daishouhuo box-icon"></i>
+                            <div class="deep-color font12">待收货</div>
+                        </div>
+                    </a>
+                    <a class="float-box-inner" href="javascript: void(0);" data-page="${params.ctx}html/order/order_list.html#end">
+                        <div class="money">
+                            <i class="icon-yiwancheng box-icon"></i>
+                            <div class="deep-color font12">已完成</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/order/order_list.html#refund">
+                        <div class="money">
+                            <i class="icon-yituikuan box-icon"></i>
+                            <div class="deep-color font12">已退款</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="weui-panel marginBottom10">
+            <div class="weui-panel__hd his-flex" style="padding: 16px 26px 16px 12px;">
+                <div><span class="fontBold deep-color">健康档案</span><span id="user_count" class="font11 light-color"></span>
+                </div>
+                <a href="javascript: void(0);" class="font12 link red-color add-family his-hide" data-page="${params.ctx}html/patient/add_patient.html">添加家人</a>
+            </div>
+            <div class="weui-panel__bd">
+                <div id="user_list"></div>
+                <div id="show_more_user" class="padding1612 his-center his-hide">
+                    <a href="javascript: void(0);" class="middle-color font12 link" data-page="${params.ctx}html/patient/patient_list.html">查看家人列表</a>
+                </div>
+            </div>
+        </div>
+        <div class="weui-panel marginBottom10">
+            <div class="weui-panel__hd fontBold deep-color" style="padding: 16px 12px;">常用功能</div>
+            <div class="weui-panel__bd">
+                <div class="his-float-box his-flex">
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/appoint/appoint_list.html">
+                        <div class="money">
+                            <i class="icon-wodeyuyue box-icon"></i>
+                            <div class="deep-color font12">我的预约</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/address/address_list.html">
+                        <div class="money">
+                            <i class="icon-shouhuodizhi box-icon"></i>
+                            <div class="deep-color font12">收货地址</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/${:(window.firstHost === 'lyb' || window.firstHost === 'lyh' ? 'scheme/lyb_scheme_list' : 'doctor/doctor_recently_list')}.html">
+                        <div class="money">
+                            <i class="icon-kanzhenyisheng box-icon"></i>
+                            <div class="deep-color font12">看诊的大夫</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/care/care_list.html">
+                        <div class="money">
+                            <i class="icon-carelist box-icon"></i>
+                            <div class="deep-color font12">关注的大夫</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="weui-panel marginBottom10">
+            <div class="weui-panel__hd fontBold deep-color" style="padding: 16px 12px;">我的资产</div>
+            <div class="weui-panel__bd">
+                <div class="his-float-box his-flex">
+                    <a id="vip" href="javascript:void(0);" class="float-box-inner" data-page="http://user.zanchina.com/html/wallet/charge.html?source=个人中心&channel=personal&origin=${:encodeURIComponent(params.ctx + 'html/index.html')}">
+                        <div class="money">
+                            <i class="icon-huiyuanka box-icon"></i>
+                            <div class="deep-color font12">会员卡</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/deduction/deduction.html">
+                        <div class="money">
+                            <i class="icon-dikoujin box-icon"></i>
+                            <div class="deep-color font12">抵扣金</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/coupon/coupon_list.html">
+                        <div class="money">
+                            <i class="icon-youhuiquan box-icon"></i>
+                            <div class="deep-color font12">优惠券</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/package_special/package_list.html">
+                        <div class="money">
+                            <i class="icon-wodetaocan box-icon"></i>
+                            <div class="deep-color font12">我的套餐</div>
+                        </div>
+                    </a>
+                </div>
+                <div class="his-float-box his-flex">
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/package_special/special_list.html">
+                        <div class="money">
+                            <i class="icon-wodezhanke box-icon"></i>
+                            <div class="deep-color font12">我的专科</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/course/my_course_list.html">
+                        <div class="money">
+                            <i class="icon-wodejiangzuo box-icon"></i>
+                            <div class="deep-color font12">我的讲座</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/insure/insure_list.html">
+                        <div class="money">
+                            <i class="icon-wodebaoxian box-icon"></i>
+                            <div class="deep-color font12">我的保险</div>
+                        </div>
+                    </a>
+                    <a href="javascript: void(0);" class="float-box-inner" data-page="${params.ctx}html/consult/consult_list.html">
+                        <div class="money">
+                            <i class="icon-wodetiwen box-icon"></i>
+                            <div class="deep-color font12">我的提问</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="weui-tabbar his-foot">
+            <a href="../index.html?_v=46379223" class="weui-tabbar__item">
+                <i class="icon-home weui-tabbar__icon"></i>
+                <p class="weui-tabbar__label">首页</p>
+            </a>
+            <a id="consultStatus" href="../chat/chat_list.html?_v=ff3595e1" class="weui-tabbar__item">
+                <i class=" icon-comments weui-tabbar__icon"></i>
+                <p class="weui-tabbar__label">咨询</p>
+            </a>
+            <a href="../discovery/discovery.html?_v=64fedadb" class="weui-tabbar__item">
+                <i class="icon-globe weui-tabbar__icon"></i>
+                <p class="weui-tabbar__label">发现</p>
+            </a>
+            <a href="javascript:;" class="weui-tabbar__item weui-bar__item_on">
+                <i class="icon-user weui-tabbar__icon"></i>
+                <p class="weui-tabbar__label">我的</p>
+            </a>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../statics/js/load.js?d87b1f4c"></script>
+
+<script type="text/javascript" src="../../statics/js/module.js?83824138"></script>
+
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require();
+    });
+</script>
+</html>

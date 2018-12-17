@@ -1,0 +1,508 @@
+<title>医生详情</title>
+<style>
+    .weui-navbar .weui-navbar__item {
+        background: #fff;
+        padding: 15px 0;
+        border-bottom: none;
+        white-space: nowrap;
+        font-size: 14px;
+        position: relative;
+        color: #333;
+    }
+    
+    .weui-navbar .weui-navbar__item.lyb-active .weui-navbar__item__text {
+        padding: 0;
+        color: #C03E3E;
+        background: transparent;
+    }
+    
+    .weui-navbar .weui-navbar__item .weui-navbar__item__underline {
+        height: 2px;
+        width: 56px;
+        position: absolute;
+        left: 50%;
+        bottom: 5px;
+        -webkit-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-radius: 2px;
+        background: #c03e3e;
+        display: none;
+    }
+    
+    .weui-navbar .weui-navbar__item.lyb-active .weui-navbar__item__underline {
+        display: inline-block;
+    }
+    
+    #medical_Record .table-view-cell:after {
+        left: 20px;
+    }
+    
+    .his-float-box {
+        background: #790D0D;
+    }
+    
+    .justify-content {
+        display: -webkit-flex;
+        -webkit-justify-content: space-between;
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 15px;
+        position: relative;
+    }
+    
+    .gray-background {
+        border-color: #fff !important;
+        color: #fff !important;
+    }
+    
+    .service-flag {
+        padding: 11px 15px;
+    }
+    
+    .service-flag:before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 14px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        -moz-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        -o-transform: translateY(-50%);
+        transform: translateY(-50%);
+        background: #e64340;
+    }
+    
+    .weui-navbar__item:after {
+        display: none;
+    }
+    
+    .buy-btn,
+    .buy-more-btn {
+        color: #fff;
+        line-height: 22px;
+        border-radius: 2px !important;
+        padding: 0;
+        font-size: 12px;
+        width: 64px !important;
+        background: #C03E3E;
+    }
+    
+    .buy-btn:after,
+    .buy-more-btn:after {
+        -webkit-border-radius: 2px !important;
+        -moz-border-radius: 2px !important;
+        border-radius: 2px !important;
+        border: none;
+    }
+    
+    #doctor_service>div,
+    #doctor_more_service>div {
+        position: relative;
+    }
+    
+    #doctor_service>div:after,
+    #doctor_more_service>div:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 10px;
+        right: 10px;
+        height: 1px;
+        background: #e5e5e5;
+        -webkit-transform: scaleY(0.5);
+        transform: scaleY(0.5);
+    }
+    
+    #doctor_service>div:last-child::after,
+    #doctor_more_service>div:last-child::after {
+        height: 0;
+    }
+    
+    .dot {
+        position: relative;
+        padding: 0;
+    }
+    
+    .dot:before {
+        content: '';
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: #DBAB7C 100%;
+        -webkit-border-radius: 100%;
+        border-radius: 100%;
+        left: -12px;
+        top: 50%;
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
+    }
+    
+    .care {
+        position: absolute;
+        top: 25px;
+        left: 20px;
+    }
+    
+    .share {
+        border: none;
+        background: transparent;
+        color: #F2CB99;
+        position: absolute;
+        top: 25px;
+        right: 20px;
+    }
+    
+    #head_url {
+        width: 60px;
+        height: 60px;
+        -webkit-border-radius: 50%;
+        -moz-border-radius: 50%;
+        border-radius: 50%;
+        border: solid 2px #fff;
+        vertical-align: top;
+    }
+    
+    .card-link {
+        display: inline-block;
+    }
+    
+    .doctor-back {
+        background: rgba(192, 62, 62, 0.06) url(//image-1252304461.file.myqcloud.com/image/yishengzhuyebj.png) no-repeat left top;
+        background-size: 100% 100%;
+        padding-bottom: 57px;
+    }
+    
+    .weui-panel:before,
+    .weui-panel:after {
+        height: 0;
+        border: none;
+    }
+    
+    .illness-view .illness-item {
+        padding: 6px 8px;
+        display: inline-block;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        line-height: 1;
+        background: transparent;
+        border: 1px solid #ccc;
+        border-radius: 2px;
+        font-size: 12px;
+        color: #666;
+    }
+    
+    .weui-panel {
+        margin-bottom: 20px;
+    }
+    
+    .illness-view .illness-item.doctor-eval-item {
+        padding: 3px 8px;
+        -webkit-border-radius: 9px;
+        border-radius: 9px;
+        color: #999999;
+    }
+    
+    .doctor-eval-head {
+        vertical-align: middle;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+    }
+    
+    .doctor-eval-angle {
+        position: absolute;
+        top: 0;
+        left: 18px;
+        width: 0;
+        height: 0;
+        border-top: 12px solid #f7f7f7;
+        border-right: 12px solid transparent;
+        transform: rotate(45deg);
+    }
+    
+    #evaluation_list .weui-panel:after {
+        border: solid 1px #f2f2f2;
+    }
+    
+    #evaluation_list.weui-panels .weui-panel:last-child {
+        margin-bottom: 0 !important;
+    }
+    
+    #evaluation_list.weui-panels .weui-panel:last-child::after {
+        border: none;
+    }
+    
+    .share-success {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 100;
+        text-align: center;
+    }
+    
+    .share-success .arrow {
+        background: url('//image-1252304461.file.myqcloud.com/image/xiaoshou.png') no-repeat;
+        position: absolute;
+        width: 32px;
+        height: 80px;
+        right: 15px;
+        top: 4px;
+        background-size: 100%;
+    }
+    
+    .share-success .mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+    }
+    
+    .share-success .share-title {
+        font-size: 18px;
+        color: #fff;
+        line-height: 26px;
+        position: relative;
+        padding: 0 20px;
+    }
+    
+    .close {
+        position: relative;
+        border-radius: 16px;
+        height: 32px;
+        display: inline-block;
+        width: 32px;
+        margin-top: 20px;
+    }
+    
+    .icon-close {
+        background: url('//image-1252304461.file.myqcloud.com/image/guanbi_icon.png') no-repeat left top;
+        background-size: 100%;
+        height: 32px;
+        display: inline-block;
+        width: 32px;
+    }
+    
+    .service-list {
+        margin-top: -37px;
+        overflow: hidden;
+        box-shadow: 0 4px 14px 0 rgba(0, 0, 0, 0.08);
+    }
+    
+    .triangle-down {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #ccc;
+        display: inline-block;
+        position: relative;
+        top: -1px;
+    }
+    
+    .service-more {
+        color: #ccc;
+    }
+    
+    .service-more i {
+        transition: all .3s;
+    }
+    
+    .pop-title {
+        background: url("//image-1252304461.file.myqcloud.com/image/popWin_title.png") left top no-repeat;
+        background-size: 100% 100%;
+        width: 142px;
+        height: 53px;
+        position: absolute;
+        top: -18px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .more-color.more:after {
+        border-color: #AE7747;
+    }
+    
+    .gaofang_link a:nth-child(2) {
+        margin-left: 10px;
+    }
+</style>
+<template>
+<div class="weui-tab">
+    <div class="weui-navbar weui-tab-titles" style="position:fixed;left: 0;right: 0;z-index: 1;">
+        <a class="weui-navbar__item lyb-active" href="javascript:;">
+            <span class="weui-navbar__item__text">医生主页</span>
+            <div class="weui-navbar__item__underline"></div>
+        </a>
+        <a class="weui-navbar__item" href="../chat/chat.html?id=${params.id}&shareId=${params.shareId}">
+            <span class="weui-navbar__item__text">在线咨询</span>
+        </a>
+        <a class="weui-navbar__item" href="../scheme/my_scheme_list.html?id=${params.id}&shareId=${params.shareId}">
+            <span class="weui-navbar__item__text">调理方案</span>
+            <div class="weui-navbar__item__underline"></div>
+        </a>
+    </div>
+    <div class="weui-panels weui-tab-contents his-flex-grow" style="margin-top: 46px;">
+        <div class="weui-navbar__panel lyb-active">
+            <div class="marginBottom10">
+                <div class="doctor-back" style="">
+                    <div class="his-center paddingTop20" style="">
+                        <i id="careDoctor" class="care icon-care-empty"></i>
+                        <button onclick="jQuery('#share').removeClass('his-hide');" class="share">
+                            <i class="icon-share"></i>
+                        </button>
+                        <img id="head_url" src="//image-1252304461.file.myqcloud.com/image/doctor.png" alt=""
+                             style="margin-bottom: 12px;"/>
+                        <div id="doctor_name" class="font16 white-color" style="margin-bottom: 9px;"></div>
+                        <div id="doctor_info" class="doctor-info font12 white-color"
+                             style="margin-bottom: 12px;opacity: 0.8;"></div>
+                        <div class="font12" style="margin: auto;opacity: 0.8;">
+                            <div class="card-link" style="margin-right: 3px;">
+                                <span class="white-color">看诊人次</span>
+                                <span id="visit_count" class="white-color">0</span>
+                            </div>
+                            <div class="card-link margin-0-20">
+                                <span class="white-color" style="margin-right: 3px;">好评率</span>
+                                <span id="comments_persent" class="white-color">100%</span>
+                            </div>
+                            <div class="card-link">
+                                <span class="white-color" style="margin-right: 3px;">复诊率</span>
+                                <span id="visit_rate" class="white-color">100%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="white-background radius4 margin12 service-list">
+                    <div id="doctor_service">
+                        <div class="white-background his-flex padding15 his-hide">
+                            <div>
+                                <div class="marginBottom10">
+                                    <span class="deep-color">预约门诊</span>
+                                    <span style="vertical-align: middle;display: inline-block;height: 12px;width: 1px;background: #222;"></span>
+                                    <span class="red-color"><span id="clinic_pricef">0</span><span
+                                            class="font11">元/次</span></span>
+                                </div>
+                                <div class="light-color font12 margin0">提前预约大夫，医馆面诊</div>
+                            </div>
+                            <a id="clinic_switch" class="weui-btn weui-btn_mini buy-btn"
+                               href="javascript: void(0);">暂未开通</a>
+                        </div>
+                    </div>
+                    <div id="doctor_more_service" class=""></div>
+                    <div id="un_care_mp" class="his-flex his-hide" style="padding: 30px;">
+                        <span class="his-flex-grow marginRight8">长按二维码或微信扫码向我发起咨询</span>
+                        <div id="doctor_qr"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="special_ps" class="his-flex marginBottom10 radius4 his-hide"
+                 style="margin: 0 12px;padding: 0 12px;background: url('//image-1252304461.file.myqcloud.com/image/ankangwenli.png') repeat;"></div>
+            <div id="doctor_gonggao" class="weui-panel his-hide" style="margin-bottom: 24px;">
+                <div class="weui-panel__hd his-flex his-align-bottom no-after-line padding12">
+                    <div class="deep-color fontBold font18">医生公告</div>
+                    <a class="yellow-color font12"
+                       onclick="zhuge.track('医生主页链接', {'功能入口': '公告'}, function(){window.location.href = ctx + 'html/notice/notice_list.html?id='+ params.id;});"
+                       href="javascript: void(0);">查看全部</a>
+                </div>
+                <div class="weui-panel__bd" style="padding: 4px 12px;">
+                    <div id="gonggao" class="middle-color lineHeight22 textline3"
+                         onclick="zhuge.track('医生主页链接', {'功能入口': '公告'}, function(){window.location.href = ctx + 'html/notice/notice_list.html?id='+ params.id;});"></div>
+                </div>
+            </div>
+            <div id="doctor_jianjie" class="weui-panel his-hide" style="margin-bottom: 24px;">
+                <div class="weui-panel__hd no-after-line padding12">
+                    <div class="deep-color fontBold font18">大夫简介</div>
+                </div>
+                <div class="weui-panel__bd" style="padding: 4px 12px;">
+                    <div id="inst" class="middle-color lineHeight22"></div>
+                </div>
+            </div>
+            <div id="doctor_shanchang" class="weui-panel his-hide" style="margin-bottom: 24px;">
+                <div class="weui-panel__hd no-after-line padding12">
+                    <div class="deep-color fontBold font18">擅长调理</div>
+                </div>
+                <div class="weui-panel__bd" style="padding: 4px 12px;">
+                    <div id="doctor_symptoms" class="illness-view professional textline3"></div>
+                </div>
+            </div>
+            <div id="xw_doctor_schedule" class="weui-panel" style="margin-bottom: 4px;display: none;">
+                <div class="weui-panel__hd his-flex his-align-bottom no-after-line padding12">
+                    <div class="deep-color fontBold font18">出诊信息</div>
+                    <a class="yellow-color font12"
+                       onclick="zhuge.track('医生主页链接', {'功能入口': '出诊信息'}, function(){window.location.href = ctx + 'html/doctor/doctor_xw_schedule.html?id='+ params.id;});"
+                       href="javascript: void(0);">查看全部</a>
+                </div>
+                <div id="xw_schedule" class="weui-panel__bd" style="padding: 4px 12px;"> </div>
+            </div>
+            <div id="doctor_wenzhang" class="weui-panel his-hide">
+                <div class="weui-panel__hd his-flex his-align-bottom no-after-line padding12">
+                    <div class="deep-color fontBold font18">推荐文章</div>
+                    <a class="yellow-color font12"
+                       onclick="zhuge.track('医生主页链接', {'功能入口': '文章'}, function(){window.location.href = ctx + 'html/article/art_list.html?doctorId='+ params.id;});"
+                       href="javascript: void(0);">查看全部</a>
+                </div>
+                <div id="wenzhang" class="weui-panel__bd" style="padding: 4px 12px;">
+
+                </div>
+            </div>
+
+            <div id="doctor_pingjia" class="weui-panel marginBottom0 his-hide">
+                <div class="weui-panel__hd his-flex his-align-bottom no-after-line padding12 paddingBottom8">
+                    <div class="deep-color fontBold font18">患者评价<span id="commont_count" class="font12 deep-color"
+                                                                      style="font-weight: normal;"></span>
+                    </div>
+                    <a class="yellow-color font12"
+                       onclick="zhuge.track('医生主页链接', {'功能入口': '评价'}, function(){window.location.href = ctx + 'html/evaluate/evaluation_list.html?id='+ params.id;});"
+                       href="javascript: void(0);">查看全部</a>
+                </div>
+                <div id="evaluation_list" class="weui-panel__bd padding12 weui-panels paddingBottom0">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="share" class="share-success his-hide">
+    <div class="mask"></div>
+    <div class="arrow"></div>
+    <div class=""
+         style="position: fixed;top: 50%;left: 0;right: 0;bottom: 0;z-index: 100;text-align: center;transform: translateY(-50%);">
+        <div class="white-background radius4"
+             style="position:relative;margin: auto;padding: 30px 0 15px 0;width: 280px;">
+            <div class="share-title font18 fontBold deep-color" style="padding: 0 22px;">分享大夫</div>
+            <div class="share-title font14 light-color lineHeight20" style="margin-top: 14px;padding: 0 22px;">
+                点击右上角将大夫分享给指定朋友</br>或朋友圈
+            </div>
+            <div class="share-content" style="margin-top: 30px;">
+                <div id="qrCode" class="marginBottom10" style="width: 100px;margin: auto;"></div>
+                <img src="//image-1252304461.file.myqcloud.com/image/chahua.png"
+                     style="width: 100%;vertical-align: middle;">
+            </div>
+        </div>
+        <a class="close" href="javascript: void(0);" onclick="this.parentNode.parentNode.classList.add('his-hide');"><i
+                class="icon-close"></i></a>
+
+    </div>
+</div>
+<div id="gaofang" class="his-hide" style="position: fixed;bottom: 0;width: 100%;left: 0;padding: 12px;background: #FFE2C8;">
+    <div class="his-flex marginBottom15 marginTop8">
+        <span class="font20" style="margin-top: -30px;color: #AE7747;" onclick="this.parentNode.parentNode.remove();">×</span>
+        <div class="pop-title" style="width: 142px;height: 53px;"></div>
+        <a href="/html/activities/gaofangjie/main.html?sourcePage=医生详情" class="font13 more more-color" style="color: #AE7747;">查看活动详情</a>
+    </div>
+    <div class="his-flex gaofang_link">
+        <a id="clinicGao" href="javascript:void(0);" data-href="doctor_schedule.html?id=${params.id}&isActiveGF=${params.isActiveGF}" class="weui-btn weui-btn_warn radius2" style="color: #FFE2C8;width: 100%;display: none;">门诊开膏</a>
+        <a id="netGao" href="javascript:void(0);" data-href="${params.ctx}pay/wx/mp/redirect/buy_service?id=${params.id}&serviceType=phone&isActiveGF=${params.isActiveGF}" class="weui-btn weui-btn_warn radius2" style="color: #FFE2C8;width: 100%;display: none;">网诊开膏</a>
+    </div>
+</div>
+</template>
+<script type="text/javascript" src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>
+<script type="text/javascript" charset="utf-8">
+    window.addEventListener('complete', function() {
+        lyb.require('doctor_detail');
+    })
+</script>

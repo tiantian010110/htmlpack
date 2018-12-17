@@ -1,0 +1,155 @@
+@font-face {
+    font-family: "iconfont";
+    src: url('../font/iconfont.ttf?t=1516796607948') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    font-family: iconfont;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    text-decoration: inherit;
+    display: inline-block;
+    speak: none;
+    vertical-align: middle;
+}
+
+.icon-simple-address:before {
+    content: "\e629";
+}
+
+.icon-globe:before {
+    content: "\e62a";
+}
+
+.icon-insure:before {
+    content: "\e62b";
+}
+
+.icon-user:before {
+    content: "\e62c";
+}
+
+.icon-globe:before {
+    content: "\e62d";
+}
+
+.icon-home:before {
+    content: "\e62f";
+}
+
+.icon-clock:before {
+    content: "\e630";
+}
+
+.icon-file-alt:before {
+    content: "\e632";
+}
+
+.icon-credit-card:before {
+    content: "\e633";
+}
+
+.icon-address_fill:before {
+    content: "\e634";
+}
+
+.icon-order:before {
+    content: "\e635";
+}
+
+.icon-appointment:before {
+    content: "\e636";
+}
+
+.icon-double-angle-down:before {
+    content: "\e637";
+}
+
+.icon-double-angle-up:before {
+    content: "\e637";
+    -webkit-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.icon-double-angle-right:before {
+    content: "\e637";
+    -webkit-transform: rotate(270deg);
+    transform: rotate(270deg);
+}
+
+.icon-star-empty:before {
+    content: "\e638";
+}
+
+.icon-star:before {
+    content: "\e638";
+    color: #ce3030;
+}
+
+.icon-address:before {
+    content: "\e63a";
+}
+
+.icon-comments:before {
+    content: "\e63b";
+}
+
+.icon-coupon:before {
+    content: "\e63c";
+}
+
+.icon-package:before {
+    content: "\e63d";
+}
+
+.icon-hospital:before {
+    content: "\e63e";
+}
+
+.icon-tel:before {
+    content: "\e640";
+}
+
+.icon-specialist:before {
+    content: "\e627";
+}
+
+.icon-checkbox-checked:before {
+    content: "\e628";
+}
+
+.icon-navi:before {
+    content: "\e639";
+}
+
+.icon-time:before {
+    content: "\e641";
+}
+
+.icon-kefu:before {
+    content: "\e642";
+}
+
+.icon-picture:before {
+    content: "\e643";
+}
+
+.icon-bell:before {
+    content: "\e644";
+}
+
+.icon-search:before {
+    content: "\e645";
+}
+
+.icon-radio-checked:before {
+    content: "\e646";
+}
+
+
