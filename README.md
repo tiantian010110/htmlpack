@@ -13,7 +13,7 @@
 
 
 ###说明：
-  *htmlpack.config.js是配置文件，这个配置文件是自动化构建的配置
+  * htmlpack.config.js是配置文件，这个配置文件是自动化构建的配置
   ```javascript
   const htmlPlugin = require('./plugins/htmlPlugin');
   const stylePlugin = require('./plugins/stylePlugin');
@@ -44,7 +44,7 @@
   }
   ```
   
-  *module.config.js 是功能模块配置文件，把需要引入的外部资源写入。
+  * module.config.js 是功能模块配置文件，把需要引入的外部资源写入。
   ```javascript
   module.exports = {
     load: {
@@ -57,4 +57,5 @@
     }
   };
 ```
-  
+
+ * 本地服务直接使用`http://ip:8000`，由于该项目没有完全开发完，暂时没有改成配置项
