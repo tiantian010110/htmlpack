@@ -12,4 +12,47 @@
 
 说明：
   1、htmlpack.config.js是配置文件，这个配置文件是自动化构建的配置
+  ```
+  const htmlPlugin = require('./plugins/htmlPlugin');
+  const stylePlugin = require('./plugins/stylePlugin');
+  const concatAssetsPlugin = require('./plugins/concatAssetsPlugin');
+
+  module.exports = {
+      module: require('./module.config'),
+      sourceDir: 'src',//源码目录文件夹
+      entry: ['load'], //从module.config.js中指定一个key值作为入口
+      output: {
+          baseDir: 'build',
+          relative: true
+      },
+      // minify: true,
+      plugins: [ //插件
+          new concatAssetsPlugin(), //合并资源的插件
+          new htmlPlugin() //处理html的插件
+          ... //可以自己开发更多插件
+      ],
+      console: true,
+      server: { //远程接口服务器配置，指定要请求数据远程服务器
+          port: 8000,
+          // hostname: '192.168.1.170:8080',
+          hostname: 'testmp.zanchina.com',
+          protocol: 'http',
+          debug: true
+      }
+  }
+  ```
+  
   2、module.config.js 是功能模块配置文件，把需要引入的外部资源写入。
+  ```
+  module.exports = {
+    load: {
+        css: ['resources/css/weui.css'],
+        js: ['resources/js/weui.js', 'resources/js/load.js']
+    },
+    index: {
+        css: ['resources/css/single_page.css'],
+        js: ['resources/js/commons/wxSign.js', 'resources/js/single_page.js', 'resources/js/business/index.js']
+    }
+  };
+```
+  
