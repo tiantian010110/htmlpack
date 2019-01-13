@@ -1,5 +1,6 @@
+
 # htmlpack
-目的是为了解决已经搭建完前端框架，再转node开发困难的目的。
+`目的是为了解决已经搭建完前端框架，再转node开发困难的目的。`
 
 
 说一下该工具的来源吧
@@ -8,11 +9,12 @@
 由于微信端开发任务比较紧急，直接用原生js搭建（为什么不用成熟的前端框架呢？一肚子苦水啊，一开始做另一个微信项目，使用了mui，看他们的demo功能老牛叉了，但是bug太多，bug太多，bug太多...）了当前src目录下的框架（不全），
 后来项目越做越大，许多重复的劳动其实可以再精简一下，而且如果使用node自动化工具处理之后可以很方便的解决缓存问题，因此在该项目基本完善的情况下开发了这个自动化构建工具。
 
-这个自动化构建工具有个缺点是适合纯H5开发，但是不用nodejs直接生成页面。说的直白一点就是不支持nodejs直接产出*.html等页面。
+这个自动化构建工具有个`缺点是适合纯H5开发`，但是不用nodejs直接生成页面。说的直白一点就是不支持nodejs直接产出*.html等页面。
 
-说明：
-  1、htmlpack.config.js是配置文件，这个配置文件是自动化构建的配置
-  ```
+
+###说明：
+  *htmlpack.config.js是配置文件，这个配置文件是自动化构建的配置
+  ```javascript
   const htmlPlugin = require('./plugins/htmlPlugin');
   const stylePlugin = require('./plugins/stylePlugin');
   const concatAssetsPlugin = require('./plugins/concatAssetsPlugin');
@@ -42,8 +44,8 @@
   }
   ```
   
-  2、module.config.js 是功能模块配置文件，把需要引入的外部资源写入。
-  ```
+  *module.config.js 是功能模块配置文件，把需要引入的外部资源写入。
+  ```javascript
   module.exports = {
     load: {
         css: ['resources/css/weui.css'],
